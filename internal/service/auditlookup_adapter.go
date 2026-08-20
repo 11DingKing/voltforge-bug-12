@@ -7,7 +7,7 @@ func ClassifyAuditLookup(present bool) string {
 	if err == nil {
 		return "ok"
 	}
-	if err.Error() == ErrAuditLookupMissing.Error() {
+	if errors.Is(err, ErrAuditLookupMissing) {
 		return "retest_required"
 	}
 	return "internal_error"

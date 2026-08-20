@@ -11,5 +11,8 @@ func LoadAuditLookup(present bool) error {
 	if present {
 		return nil
 	}
-	return fmt.Errorf("load auditlookup: %v", ErrAuditLookupMissing)
+	if !present {
+		return fmt.Errorf("load auditlookup: %w", ErrAuditLookupMissing)
+	}
+	return nil
 }
